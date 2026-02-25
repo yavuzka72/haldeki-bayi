@@ -1,0 +1,41 @@
+name: haldeki_admin_web
+description: Haldeki Bayi için tam web  
+publish_to: "none"
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.3.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  go_router: ^14.2.0
+  http: ^1.2.1
+  provider: ^6.1.2
+  intl: ^0.19.0
+  dio: ^5.9.0
+  shared_preferences: ^2.2.3
+  flutter_map: ^7.0.2
+  latlong2: ^0.9.1
+  file_picker: ^8.0.5
+  cached_network_image: ^3.4.0
+  url_launcher: ^6.2.6
+  google_maps_flutter: ^2.10.1
+  google_fonts: ^6.3.0
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/icon/motor.png
+    - assets/logo.png
+    - assets/haldeki_logo.png
+    - assets/logo/haldeki_logo.png
+    - assets/logo/haldeki_logo_icon.png
