@@ -21,10 +21,20 @@
 
   <script>
     // Static host'ta path ile gelindiyse (örn: /orders), hash route'a çevir.
+    // Base path altında yayınlandığında da doğru çalışsın (örn: /admin/).
     (function () {
       var p = window.location.pathname || '';
-      if (p.length > 1 && p !== '/index.html' && !window.location.hash) {
-        window.location.replace('/#' + p + window.location.search);
+      var q = window.location.search || '';
+      var b = document.querySelector('base');
+      var base = (b && b.getAttribute('href')) ? b.getAttribute('href') : '/';
+      if (!base.startsWith('/')) base = '/' + base;
+      if (!base.endsWith('/')) base = base + '/';
+      var normP = p;
+      if (base !== '/' && p.indexOf(base) === 0) {
+        normP = p.substring(base.length - 1); // '/orders' gibi
+      }
+      if (normP.length > 1 && normP !== '/index.html' && !window.location.hash) {
+        window.location.replace(base + '#' + normP + q);
       }
     })();
   </script>
@@ -47,7 +57,7 @@
 
   <script>
     // The value below is injected by flutter build, do not touch.
-    const serviceWorkerVersion = "2845237435";
+    const serviceWorkerVersion = "3745683045";
   </script>
   <!-- This script adds the flutter initialization JS code -->
   <script src="flutter.js" defer></script>

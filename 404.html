@@ -9,16 +9,22 @@
       var p = window.location.pathname || '/';
       var q = window.location.search || '';
       var h = window.location.hash || '';
+      var seg = p.split('/').filter(Boolean);
+      var base = seg.length > 0 ? ('/' + seg[0] + '/') : '/';
       if (p === '/404.html') p = '/';
       if (h && h.indexOf('#/') === 0) {
-        window.location.replace('/' + h + q);
+        window.location.replace(base + h + q);
         return;
       }
       if (p !== '/' && p !== '/index.html') {
-        window.location.replace('/#' + p + q);
+        var rel = p;
+        if (base !== '/' && p.indexOf(base) === 0) {
+          rel = p.substring(base.length - 1);
+        }
+        window.location.replace(base + '#' + rel + q);
         return;
       }
-      window.location.replace('/' + q);
+      window.location.replace(base + q);
     })();
   </script>
 </head>
