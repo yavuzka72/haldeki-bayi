@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Haldeki Admin</title>
+  <script>
+    // Static hostlar 404 sayfasını döndürdüğünde path'i hash route'a yönlendir.
+    (function () {
+      var p = window.location.pathname || '/';
+      var q = window.location.search || '';
+      var h = window.location.hash || '';
+      if (p === '/404.html') p = '/';
+      if (h && h.indexOf('#/') === 0) {
+        window.location.replace('/' + h + q);
+        return;
+      }
+      if (p !== '/' && p !== '/index.html') {
+        window.location.replace('/#' + p + q);
+        return;
+      }
+      window.location.replace('/' + q);
+    })();
+  </script>
+</head>
+<body></body>
+</html>
